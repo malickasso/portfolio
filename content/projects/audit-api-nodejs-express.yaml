@@ -1,0 +1,13 @@
+title: "Audit API Node.js / Express"
+titleEn: "Node.js / Express API audit"
+category: "audit"
+tagFr: "Audit sécurité"
+tagEn: "Security audit"
+descriptionFr: "Audit d'une API avec OWASP ZAP : analyse des en-têtes CSP, CORS et SRI, puis recommandations de durcissement avant le déploiement sur Render."
+descriptionEn: "API audit with OWASP ZAP: CSP, CORS and SRI header analysis, then hardening recommendations before deployment on Render."
+tools:
+  - "OWASP ZAP"
+  - "Node.js"
+  - "Express"
+visual: "headers"
+featured: true

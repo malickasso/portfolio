@@ -1,0 +1,6 @@
+name: "Certified Blue Team Fundamentals (BTF)"
+issuer: "CyberWarFare Labs"
+date: "2026"
+summaryFr: "Analyse d'attaques web, réseau et hôte ; détection et recherches SIEM avec Wazuh."
+summaryEn: "Web, network and host attack analysis; SIEM detection and hunting with Wazuh."
+featured: true

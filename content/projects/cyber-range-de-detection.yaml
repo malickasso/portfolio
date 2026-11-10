@@ -1,0 +1,12 @@
+title: "Cyber range de détection"
+titleEn: "Detection cyber range"
+category: "soc"
+tagFr: "Lab"
+descriptionFr: "Infrastructure KVM/libvirt isolée : SIEM Wazuh, attaquant Parrot, cibles Metasploitable et Windows, snapshots pour rejouer chaque scénario."
+descriptionEn: "Isolated KVM/libvirt infrastructure: Wazuh SIEM, Parrot attacker, Metasploitable and Windows targets, snapshots to replay every scenario."
+tools:
+  - "Wazuh"
+  - "KVM"
+  - "Parrot OS"
+visual: "network"
+featured: true

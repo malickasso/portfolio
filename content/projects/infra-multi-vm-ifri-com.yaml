@@ -1,0 +1,13 @@
+title: "Infra multi-VM ifri.com"
+titleEn: "ifri.com multi-VM infrastructure"
+category: "network"
+tagFr: "Infra / Linux"
+descriptionFr: "Services d'entreprise sur plusieurs VM : annuaire LDAP, messagerie Postfix/Dovecot, Apache/WordPress, supervision Prometheus et Grafana."
+descriptionEn: "Enterprise services across several VMs: LDAP directory, Postfix/Dovecot mail, Apache/WordPress, Prometheus and Grafana monitoring."
+tools:
+  - "Linux"
+  - "LDAP"
+  - "Prometheus"
+  - "Grafana"
+visual: "vms"
+featured: false

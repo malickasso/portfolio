@@ -1,0 +1,12 @@
+title: "Forensic mémoire"
+titleEn: "Memory forensics"
+category: "forensic"
+tagFr: "Forensic"
+tagEn: "Forensics"
+descriptionFr: "Analyse d'images mémoire avec Volatility 3 : processus suspects, connexions réseau et artefacts de compromission."
+descriptionEn: "Memory image analysis with Volatility 3: suspicious processes, network connections and compromise artefacts."
+tools:
+  - "Volatility 3"
+  - "Windows"
+visual: "memory"
+featured: false

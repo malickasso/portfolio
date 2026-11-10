@@ -1,26 +1,208 @@
 @import "tailwindcss";
 
+@custom-variant light (&:where(.light, .light *));
+
+/* Thème sombre par défaut */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b0d0c;
+  --surface: #121614;
+  --surface-2: #181d1a;
+  --line: #242b27;
+  --fg: #eceeec;
+  --muted: #8b9590;
+  --accent: #2fe28a;
+  --accent-fg: #06130c;
+  --grid: rgba(47, 226, 138, 0.05);
+  color-scheme: dark;
+}
+
+html.light {
+  --bg: #eceeea;
+  --surface: #f6f7f4;
+  --surface-2: #e2e5df;
+  --line: #d3d8d1;
+  --fg: #101312;
+  --muted: #5a645f;
+  --accent: #0f9f55;
+  --accent-fg: #ffffff;
+  --grid: rgba(16, 19, 18, 0.05);
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: var(--font-space);
+  --font-display: var(--font-space);
+  --font-mono: var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-space), system-ui, sans-serif;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 30% 40%, black 20%, transparent 75%);
+}
+
+/* Coins façon viseur */
+.corners {
+  position: relative;
+}
+.corners::before,
+.corners::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent);
+  pointer-events: none;
+}
+.corners::before {
+  top: 10px;
+  left: 10px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.corners::after {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee {
+    animation: none;
+  }
+}
+
+/* Contenu des articles de blog */
+.prose-content {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.prose-content > * + *,
+.prose-content > article > * + * {
+  margin-top: 1.25em;
+}
+.prose-content h2 {
+  margin-top: 2.2em;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.prose-content h3 {
+  margin-top: 1.8em;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.prose-content p,
+.prose-content li {
+  color: color-mix(in srgb, var(--fg) 85%, var(--muted));
+}
+.prose-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-content ul,
+.prose-content ol {
+  padding-left: 1.4em;
+}
+.prose-content ul {
+  list-style: disc;
+}
+.prose-content ol {
+  list-style: decimal;
+}
+.prose-content li::marker {
+  color: var(--accent);
+}
+.prose-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.2em;
+  color: var(--muted);
+}
+.prose-content code {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.88em;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+}
+.prose-content pre {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface);
+  padding: 1.2em 1.4em;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.prose-content pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.prose-content img {
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+}
+.prose-content hr {
+  border-color: var(--line);
+}
+.prose-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose-content th,
+.prose-content td {
+  border: 1px solid var(--line);
+  padding: 0.5em 0.8em;
+  text-align: left;
 }

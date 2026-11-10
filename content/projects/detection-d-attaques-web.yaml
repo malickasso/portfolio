@@ -1,0 +1,12 @@
+title: "Détection d'attaques web"
+titleEn: "Web attack detection"
+category: "soc"
+tagFr: "Investigation"
+descriptionFr: "Détection d'injections SQL, de XSS et d'inclusions de fichiers dans Wazuh ; analyse pcap avec Wireshark et tshark."
+descriptionEn: "Detected SQL injection, XSS and file inclusion in Wazuh; pcap analysis with Wireshark and tshark."
+tools:
+  - "Wazuh"
+  - "Wireshark"
+  - "tshark"
+visual: "radar"
+featured: false

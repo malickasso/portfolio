@@ -1,0 +1,12 @@
+title: "Hackerlab 2026"
+category: "ctf"
+tagFr: "CTF · Bénin"
+tagEn: "CTF · Benin"
+date: "2026"
+descriptionFr: "Joueur « mk_07 » : OSINT, malware et forensic disque Windows (Prefetch, Amcache, evtx), mots de passe cassés avec hashcat."
+descriptionEn: "Player “mk_07”: OSINT, malware and Windows disk forensics (Prefetch, Amcache, evtx), passwords cracked with hashcat."
+tools:
+  - "Windows"
+  - "hashcat"
+visual: "flag"
+featured: false

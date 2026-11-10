@@ -1,0 +1,13 @@
+title: "FinTrust Bank — GNS3"
+category: "network"
+tagFr: "Réseau"
+tagEn: "Network"
+descriptionFr: "Réseau bancaire multisite simulé sous GNS3 : VLANs, VPN IPsec, NAT/PAT et ACL sur équipements Cisco et MikroTik, pare-feu Cisco ASA."
+descriptionEn: "Multi-site banking network simulated in GNS3: VLANs, IPsec VPN, NAT/PAT and ACLs on Cisco and MikroTik gear, Cisco ASA firewall."
+tools:
+  - "GNS3"
+  - "Cisco"
+  - "MikroTik"
+image: "/images/projects/fintrust-bank-gns3/image.png"
+visual: "network"
+featured: true

@@ -1,0 +1,12 @@
+title: "BYTEME 2026"
+category: "ctf"
+tagFr: "CTF · Inde"
+tagEn: "CTF · India"
+date: "2026"
+descriptionFr: "Joueur « mk_07 » : web, cryptographie, rétro-ingénierie, exploitation de binaires, stéganographie et IA/ML."
+descriptionEn: "Player “mk_07”: web, cryptography, reverse engineering, binary exploitation, steganography and AI/ML."
+tools:
+  - "Python"
+  - "Kali Linux"
+visual: "terminal"
+featured: false

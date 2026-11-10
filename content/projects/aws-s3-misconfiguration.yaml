@@ -1,0 +1,11 @@
+title: "AWS S3 Misconfiguration"
+category: "audit"
+tagFr: "Pentest / Cloud"
+descriptionFr: "Lab PentesterLab : exploitation de permissions mal configurées sur un bucket S3."
+descriptionEn: "PentesterLab exercise: exploiting misconfigured permissions on an S3 bucket."
+tools:
+  - "AWS"
+  - "S3"
+  - "PentesterLab"
+visual: "bucket"
+featured: false

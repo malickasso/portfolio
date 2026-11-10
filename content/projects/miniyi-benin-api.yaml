@@ -1,0 +1,14 @@
+title: "Miniyi Bénin API"
+titleEn: "Miniyi Benin API"
+category: "web"
+tagFr: "API REST"
+tagEn: "REST API"
+descriptionFr: "API Node.js/Express de mobilité partagée, sécurisée et documentée, déployée sur Render, avec une console d'administration à sessions HttpOnly."
+descriptionEn: "Shared-mobility Node.js/Express API, secured and documented, deployed on Render, with an admin console using HttpOnly sessions."
+tools:
+  - "Node.js"
+  - "Express"
+  - "Render"
+image: "/images/projects/miniyi-benin-api/image.png"
+visual: "headers"
+featured: false

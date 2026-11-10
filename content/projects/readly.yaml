@@ -1,0 +1,12 @@
+title: "Readly"
+category: "web"
+tagFr: "Fullstack"
+tagEn: "Full-stack"
+descriptionFr: "Bibliothèque numérique en PHP et MySQL : catalogue, recherche, gestion des rôles et liste de souhaits."
+descriptionEn: "Digital library built with PHP and MySQL: catalogue, search, role management and wishlist."
+tools:
+  - "PHP"
+  - "MySQL"
+image: "/images/projects/readly/image.png"
+visual: "terminal"
+featured: false
