@@ -16,7 +16,7 @@ export default function Skills({ skills, common, lang, preview }: Props) {
   return (
     <section
       id="skills"
-      className={`relative overflow-hidden ${preview ? "border-t border-line py-28" : "pt-32 pb-28"}`}
+      className={`relative overflow-hidden ${preview ? "border-t border-line py-20 sm:py-28" : "pt-28 pb-20 sm:pt-32 sm:pb-28"}`}
     >
       <div className="pointer-events-none absolute top-1/2 left-0 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
@@ -31,7 +31,7 @@ export default function Skills({ skills, common, lang, preview }: Props) {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((s, i) => (
-            <Reveal key={s.tag} delay={(i % 3) * 0.08}>
+            <Reveal key={s.tag} delay={(i % 3) * 0.08} className={preview && i === 2 ? "md:col-span-2 lg:col-span-1" : undefined}>
               <article className="group flex h-full flex-col justify-between rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent">
                 <div>
                   <div className="mb-6 flex items-center justify-between">

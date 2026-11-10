@@ -21,7 +21,7 @@ export default function Blog({ blog, common, lang, posts, preview }: Props) {
   return (
     <section
       id="blog"
-      className={`relative overflow-hidden ${preview ? "border-t border-line py-28" : "min-h-[70vh] pt-32 pb-28"}`}
+      className={`relative overflow-hidden ${preview ? "border-t border-line py-20 sm:py-28" : "min-h-[70vh] pt-28 pb-20 sm:pt-32 sm:pb-28"}`}
     >
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {!preview && <BackLink href={`/${lang}`}>{common.back}</BackLink>}
@@ -42,7 +42,7 @@ export default function Blog({ blog, common, lang, posts, preview }: Props) {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {list.map((p, i) => (
-            <Reveal key={p.slug} delay={(i % 3) * 0.08}>
+            <Reveal key={p.slug} delay={(i % 3) * 0.08} className={preview && i === 2 && list.length === 3 ? "md:col-span-2 lg:col-span-1" : undefined}>
               <Link
                 href={`/${lang}/blog/${p.slug}`}
                 className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-accent"

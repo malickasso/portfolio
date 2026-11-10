@@ -43,7 +43,7 @@ export default async function PostPage({ params }: PageProps<"/[lang]/blog/[slug
 
   return (
     <PageShell lang={lang} dict={dict}>
-      <article className="mx-auto max-w-3xl px-5 pt-32 pb-28 sm:px-8">
+      <article className="mx-auto max-w-3xl px-5 pt-28 pb-20 sm:pt-32 sm:pb-28 sm:px-8">
         <BackLink href={`/${lang}/blog`}>{dict.blog.backToBlog}</BackLink>
         <p className="font-mono text-xs text-muted">{post.dateLabel}</p>
         <h1 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">

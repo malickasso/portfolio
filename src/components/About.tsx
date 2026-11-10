@@ -5,7 +5,7 @@ import { Label, Reveal } from "./ui";
 
 export default function About({ about }: { about: Dictionary["about"] }) {
   return (
-    <section id="about" className="mx-auto max-w-7xl px-5 py-28 sm:px-8">
+    <section id="about" className="mx-auto max-w-7xl px-5 py-20 sm:py-28 sm:px-8">
       <Reveal>
         <Label>{about.label}</Label>
         <p className="mt-6 max-w-5xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl">

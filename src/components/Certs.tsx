@@ -20,7 +20,7 @@ export default function Certs({ certs, common, lang, items, preview }: Props) {
   return (
     <section
       id="certs"
-      className={`relative overflow-hidden ${preview ? "border-t border-line bg-surface py-28" : "pt-32 pb-28"}`}
+      className={`relative overflow-hidden ${preview ? "border-t border-line bg-surface py-20 sm:py-28" : "pt-28 pb-20 sm:pt-32 sm:pb-28"}`}
     >
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {!preview && <BackLink href={`/${lang}`}>{common.back}</BackLink>}
@@ -36,7 +36,7 @@ export default function Certs({ certs, common, lang, items, preview }: Props) {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {list.map((c, i) => (
-            <Reveal key={c.slug} delay={(i % 3) * 0.08}>
+            <Reveal key={c.slug} delay={(i % 3) * 0.08} className={preview && i === 2 && list.length === 3 ? "md:col-span-2 lg:col-span-1" : undefined}>
               <article
                 className={`group flex h-full flex-col justify-between rounded-3xl border p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent ${
                   preview ? "bg-bg" : "bg-surface"

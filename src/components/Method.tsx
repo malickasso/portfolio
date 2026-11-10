@@ -25,7 +25,7 @@ export default function Method({ method }: { method: Dictionary["method"] }) {
 
   return (
     <section id="method" className="border-t border-line">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-28 sm:px-8 lg:grid-cols-[1fr_1.3fr]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:py-28 sm:px-8 lg:grid-cols-[1fr_1.3fr]">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <Reveal>
             <Label>{method.label}</Label>
@@ -69,7 +69,7 @@ export default function Method({ method }: { method: Dictionary["method"] }) {
                     on ? "border-accent bg-accent shadow-[0_0_0_5px_color-mix(in_srgb,var(--accent)_20%,transparent)]" : "border-line bg-bg"
                   }`}
                 />
-                <div className={`transition-opacity duration-500 ${on ? "opacity-100" : "opacity-40"}`}>
+                <div className={`transition-opacity duration-500 ${on ? "opacity-100" : "opacity-50"}`}>
                   <p className="font-mono text-xs text-muted">0{i + 1}</p>
                   <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">{s.title}</h3>
                   <p className="mt-3 max-w-lg text-muted">{s.text}</p>

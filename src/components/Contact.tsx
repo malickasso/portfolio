@@ -48,7 +48,7 @@ export default function Contact({ contact }: { contact: Dictionary["contact"] })
   ];
 
   return (
-    <section id="contact" className="mx-auto max-w-7xl px-5 py-28 sm:px-8">
+    <section id="contact" className="mx-auto max-w-7xl px-5 py-20 sm:py-28 sm:px-8">
       <div className="grid gap-14 lg:grid-cols-2">
         <Reveal>
           <Label>{contact.label}</Label>
@@ -70,7 +70,16 @@ export default function Contact({ contact }: { contact: Dictionary["contact"] })
                     {c.icon}
                   </span>
                   <span className="flex-1">
-                    <span className="block break-all font-medium">{c.value}</span>
+                    <span className="block font-medium [overflow-wrap:anywhere]">
+                      {c.value.includes("@") ? (
+                        <>
+                          {c.value.split("@")[0]}
+                          <wbr />@{c.value.split("@")[1]}
+                        </>
+                      ) : (
+                        c.value
+                      )}
+                    </span>
                     <span className="text-sm text-muted">{c.label}</span>
                   </span>
                   <ArrowUpRight className="h-5 w-5 text-muted transition-transform group-hover:rotate-45 group-hover:text-accent" />

@@ -23,6 +23,10 @@ export function validateContact(input: unknown): ContactPayload | null {
     company: str(d.company),
   };
 
+  // Pas de saut de ligne ni de caractère de contrôle dans les champs repris
+  // dans les en-têtes de l'email (objet, reply-to).
+  const CONTROL = /[\u0000-\u001f\u007f]/;
+  if (CONTROL.test(payload.name) || CONTROL.test(payload.email)) return null;
   if (payload.name.length < 2 || payload.name.length > 100) return null;
   if (!EMAIL_RE.test(payload.email) || payload.email.length > 200) return null;
   if (!contactSubjects.includes(payload.subject)) return null;

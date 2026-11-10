@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 127.0.0.1",
+    "dev:lan": "PORTFOLIO_LAN=1 next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -31,5 +32,10 @@
     "eslint-config-next": "16.4.6",
     "tailwindcss": "4.3.3",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@keystatic/core": {
+      "minimatch": "^11.0.5"
+    }
   }
 }

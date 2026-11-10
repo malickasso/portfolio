@@ -8,7 +8,7 @@ import { Reveal, SectionHeader } from "./ui";
 export function Testimonials({ data }: { data: Dictionary["testimonials"] }) {
   if (!data.items.length) return null;
   return (
-    <section className="mx-auto max-w-7xl px-5 py-28 sm:px-8">
+    <section className="mx-auto max-w-7xl px-5 py-20 sm:py-28 sm:px-8">
       <SectionHeader label={data.label} title={data.title} />
       <div className="grid gap-4 md:grid-cols-2">
         {data.items.map((t, i) => (
@@ -30,7 +30,7 @@ export function Testimonials({ data }: { data: Dictionary["testimonials"] }) {
 export function Offers({ data }: { data: Dictionary["offers"] }) {
   if (!data.items.length) return null;
   return (
-    <section className="mx-auto max-w-7xl px-5 py-28 sm:px-8">
+    <section className="mx-auto max-w-7xl px-5 py-20 sm:py-28 sm:px-8">
       <SectionHeader label={data.label} title={data.title} />
       <div className="grid gap-4 md:grid-cols-3">
         {data.items.map((o, i) => (

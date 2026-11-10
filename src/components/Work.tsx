@@ -33,7 +33,7 @@ export default function Work({ work, common, lang, projects, preview }: Props) {
   return (
     <section
       id="work"
-      className={`relative overflow-hidden ${preview ? "border-t border-line bg-surface py-28" : "pt-32 pb-28"}`}
+      className={`relative overflow-hidden ${preview ? "border-t border-line bg-surface py-20 sm:py-28" : "pt-28 pb-20 sm:pt-32 sm:pb-28"}`}
     >
       <div className="pointer-events-none absolute bottom-0 left-1/4 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
@@ -66,7 +66,7 @@ export default function Work({ work, common, lang, projects, preview }: Props) {
 
         <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {items.map((p) => (
+            {items.map((p, i) => (
               <motion.article
                 key={p.slug}
                 layout
@@ -74,7 +74,9 @@ export default function Work({ work, common, lang, projects, preview }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3 }}
-                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-bg transition-colors duration-300 hover:border-accent"
+                className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-bg transition-colors duration-300 hover:border-accent ${
+                  preview && i === 2 && items.length === 3 ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
               >
                 <div className="relative h-48 overflow-hidden border-b border-line">
                   {p.image ? (

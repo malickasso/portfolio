@@ -1,8 +1,17 @@
 import { makeRouteHandler } from "@keystatic/next/route-handler";
 import config from "../../../../../keystatic.config";
-import { adminEnabled } from "@/lib/admin";
+import { adminEnabled, adminIsLocal, isLocalRequest } from "@/lib/admin";
 
 const notFound = () => new Response("Not Found", { status: 404 });
-const handler = adminEnabled ? makeRouteHandler({ config }) : { GET: notFound, POST: notFound };
+const keystatic = adminEnabled ? makeRouteHandler({ config }) : null;
 
-export const { GET, POST } = handler;
+function guard(handler: ((request: Request) => Promise<Response>) | undefined) {
+  return async (request: Request) => {
+    if (!handler) return notFound();
+    if (adminIsLocal && !isLocalRequest(request)) return notFound();
+    return handler(request);
+  };
+}
+
+export const GET = guard(keystatic?.GET);
+export const POST = guard(keystatic?.POST);

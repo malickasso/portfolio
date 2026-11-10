@@ -103,7 +103,7 @@ export function ViewAllLink({ href, children }: { href: string; children: ReactN
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-fg transition-all duration-300 hover:border-accent hover:text-accent"
+      className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-line px-5 py-2.5 text-sm font-medium text-fg transition-all duration-300 hover:border-accent hover:text-accent"
     >
       {children}
       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -145,7 +145,7 @@ export function SectionHeader({
         </Heading>
         {intro && <p className="mt-5 max-w-xl text-muted">{intro}</p>}
       </Reveal>
-      {aside && <Reveal delay={0.1}>{aside}</Reveal>}
+      {aside && <Reveal delay={0.1} className="shrink-0">{aside}</Reveal>}
     </div>
   );
 }
