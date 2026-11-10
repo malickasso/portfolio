@@ -62,11 +62,11 @@ export default function Header({ lang, nav }: { lang: Locale; nav: Dictionary["n
 
         <div className="flex items-center gap-2">
           <div className="hidden items-center rounded-full border border-line px-3 py-2 font-mono text-xs sm:flex">
-            <Link href={switchTo("fr")} className={lang === "fr" ? "text-fg" : "text-muted hover:text-fg"}>
+            <Link href={switchTo("fr")} scroll={false} className={lang === "fr" ? "text-fg" : "text-muted hover:text-fg"}>
               FR
             </Link>
             <span className="px-1.5 text-muted">/</span>
-            <Link href={switchTo("en")} className={lang === "en" ? "text-fg" : "text-muted hover:text-fg"}>
+            <Link href={switchTo("en")} scroll={false} className={lang === "en" ? "text-fg" : "text-muted hover:text-fg"}>
               EN
             </Link>
           </div>
@@ -118,8 +118,8 @@ export default function Header({ lang, nav }: { lang: Locale; nav: Dictionary["n
                 </li>
               ))}
               <li className="flex gap-4 pt-3 font-mono text-sm">
-                <Link href={switchTo("fr")} className={lang === "fr" ? "text-accent" : "text-muted"}>FR</Link>
-                <Link href={switchTo("en")} className={lang === "en" ? "text-accent" : "text-muted"}>EN</Link>
+                <Link href={switchTo("fr")} scroll={false} className={lang === "fr" ? "text-accent" : "text-muted"}>FR</Link>
+                <Link href={switchTo("en")} scroll={false} className={lang === "en" ? "text-accent" : "text-muted"}>EN</Link>
               </li>
             </ul>
           </motion.nav>
