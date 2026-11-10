@@ -1,9 +1,5 @@
-// Adresse publique : NEXT_PUBLIC_SITE_URL (domaine perso), sinon l'URL de
-// production fournie par Vercel, sinon localhost.
-const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
-const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000")
-).replace(/\/$/, "");
+// Adresse publique : NEXT_PUBLIC_SITE_URL (domaine perso), sinon l'adresse Vercel.
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://malickassouma.vercel.app").replace(/\/$/, "");
 
 // Données non traduites : liens, contacts, options d'affichage.
 export const site = {
