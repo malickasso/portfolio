@@ -21,7 +21,8 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
   return (
     <span ref={ref}>
-      {n}
+      <span className="js-only">{n}</span>
+      <noscript>{value}</noscript>
       <span className="text-accent">{suffix}</span>
     </span>
   );

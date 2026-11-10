@@ -48,6 +48,10 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       className={`${space.variable} ${jetbrains.variable} antialiased`}
     >
       <body className="min-h-screen">
+        {/* Sans JavaScript, les animations d'apparition ne démarrent pas : on affiche tout. */}
+        <noscript>
+          <style>{`[style*="opacity:0"],[style*="translateY"]{opacity:1!important;transform:none!important}.js-only{display:none!important}`}</style>
+        </noscript>
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
       </body>
