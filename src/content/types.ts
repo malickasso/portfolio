@@ -6,7 +6,7 @@ export type WorkFilter = "web" | "audit" | "network" | "soc" | "forensic" | "ctf
 
 export type Dictionary = {
   meta: { title: string; description: string };
-  common: { viewAll: string; back: string };
+  common: { viewAll: string; back: string; toTop: string };
   nav: {
     about: string;
     skills: string;

@@ -6,7 +6,7 @@ export const en: Dictionary = {
     description:
       "Detection, security audits and incident response for businesses in Benin and remotely. BTF and C3SA certified.",
   },
-  common: { viewAll: "View all", back: "Back to home" },
+  common: { viewAll: "View all", back: "Back to home", toTop: "Back to top" },
   nav: {
     skills: "Skills",
     about: "About",

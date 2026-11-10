@@ -41,7 +41,6 @@ export default function Hero({ hero }: { hero: Dictionary["hero"] }) {
                   transition={{ duration: 0.9, delay: 0.15 + i * 0.12, ease }}
                 >
                   {word}
-                  {i === 1 && <span className="text-accent">.</span>}
                 </motion.span>
               </span>
             ))}

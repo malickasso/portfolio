@@ -6,7 +6,7 @@ export const fr: Dictionary = {
     description:
       "Détection, audit et réponse à incident pour les entreprises au Bénin et à distance. Certifié BTF et C3SA.",
   },
-  common: { viewAll: "Voir tout", back: "Retour à l'accueil" },
+  common: { viewAll: "Voir tout", back: "Retour à l'accueil", toTop: "Revenir en haut" },
   nav: {
     skills: "Compétences",
     about: "À propos",
