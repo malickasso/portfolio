@@ -1,8 +1,15 @@
+// Adresse publique : NEXT_PUBLIC_SITE_URL (domaine perso), sinon l'URL de
+// production fournie par Vercel, sinon localhost.
+const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL || (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000")
+).replace(/\/$/, "");
+
 // Données non traduites : liens, contacts, options d'affichage.
 export const site = {
   name: "Malick Assouma",
   fullName: "Abdou Malick ASSOUMA",
-  url: "https://malickassouma.com",
+  url: siteUrl,
   email: "abdoumalickassouma804@gmail.com",
   whatsapp: "2290195459313",
   whatsappDisplay: "+229 01 95 45 93 13",
