@@ -1,6 +1,11 @@
-name: "Foundations of Cybersecurity"
-issuer: "Google / Coursera"
-date: "2026-07"
-summaryFr: "Premier module du certificat Google Cybersecurity : rôles, cadres et bonnes pratiques de la sécurité."
-summaryEn: "First course of the Google Cybersecurity certificate: security roles, frameworks and best practices."
+name: Foundations of Cybersecurity
+issuer: Google / Coursera
+date: 2026-07
+summaryFr: >-
+  Premier module du certificat Google Cybersecurity : rôles, cadres et bonnes
+  pratiques de la sécurité.
+summaryEn: >-
+  First course of the Google Cybersecurity certificate: security roles,
+  frameworks and best practices.
+pdf: /certifications/foundations-of-cybersecurity/pdf.pdf
 featured: false

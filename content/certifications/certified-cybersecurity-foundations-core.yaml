@@ -1,6 +1,9 @@
-name: "Certified Cybersecurity Foundations (CORE)"
-issuer: "Hackviser"
-date: "2026-07"
-summaryFr: "Fondamentaux de la cybersécurité : réseaux, systèmes, menaces et principes de défense."
-summaryEn: "Cybersecurity fundamentals: networks, systems, threats and defence principles."
+name: Certified Cybersecurity Foundations (CORE)
+issuer: Hackviser
+date: 2026-07
+summaryFr: >-
+  Fondamentaux de la cybersécurité : réseaux, systèmes, menaces et principes de
+  défense.
+summaryEn: 'Cybersecurity fundamentals: networks, systems, threats and defence principles.'
+pdf: /certifications/certified-cybersecurity-foundations-core/pdf.pdf
 featured: true

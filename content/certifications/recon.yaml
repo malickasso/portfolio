@@ -1,6 +1,11 @@
-name: "Recon"
-issuer: "PentesterLab"
-date: "2026-07"
-summaryFr: "Techniques de reconnaissance en test d'intrusion : découverte d'actifs, énumération et collecte d'informations."
-summaryEn: "Penetration-testing reconnaissance: asset discovery, enumeration and information gathering."
+name: Recon
+issuer: PentesterLab
+date: 2026-07
+summaryFr: >-
+  Techniques de reconnaissance en test d'intrusion : découverte d'actifs,
+  énumération et collecte d'informations.
+summaryEn: >-
+  Penetration-testing reconnaissance: asset discovery, enumeration and
+  information gathering.
+pdf: /certifications/recon/pdf.pdf
 featured: false
