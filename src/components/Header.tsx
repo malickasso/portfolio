@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Locale } from "@/content";
 import type { Dictionary } from "@/content/types";
+import { Logo } from "./ui";
 
 export default function Header({ lang, nav }: { lang: Locale; nav: Dictionary["nav"] }) {
   const [open, setOpen] = useState(false);
@@ -39,13 +40,8 @@ export default function Header({ lang, nav }: { lang: Locale; nav: Dictionary["n
       }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
-        <Link href={home} className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-fg font-mono text-xs font-bold text-bg">
-            MA
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight">
-            Malick Assouma<span className="text-accent">.</span>
-          </span>
+        <Link href={home} aria-label="Malick Assouma" className="group text-base sm:text-lg">
+          <Logo />
         </Link>
 
         <nav className="hidden lg:block">

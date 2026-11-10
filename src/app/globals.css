@@ -108,7 +108,19 @@ body {
   animation-play-state: paused;
 }
 
+.logo-cursor {
+  animation: logo-blink 1.1s steps(1) infinite;
+}
+@keyframes logo-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .logo-cursor {
+    animation: none;
+  }
   html {
     scroll-behavior: auto;
   }

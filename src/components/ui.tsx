@@ -173,3 +173,16 @@ export function WhatsappIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+// Logo façon balise JSX : <Malick ASSOUMA />
+export function Logo({ className = "" }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-baseline whitespace-nowrap font-mono font-semibold tracking-tight ${className}`}>
+      <span className="text-accent">&lt;</span>
+      <span>Malick</span>
+      <span className="ml-[0.5ch] text-accent">ASSOUMA</span>
+      <span className="logo-cursor ml-[0.15ch] text-accent" aria-hidden="true">_</span>
+      <span className="ml-[0.35ch] text-accent">/&gt;</span>
+    </span>
+  );
+}

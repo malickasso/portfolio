@@ -2,15 +2,15 @@ import Link from "next/link";
 import type { Locale } from "@/content";
 import type { Dictionary } from "@/content/types";
 import { site } from "@/content/site";
-import { GithubIcon, LinkedinIcon, WhatsappIcon } from "./ui";
+import { GithubIcon, LinkedinIcon, Logo, WhatsappIcon } from "./ui";
 
 export default function Footer({ footer, nav, lang }: { footer: Dictionary["footer"]; nav: Dictionary["nav"]; lang: Locale }) {
   return (
     <footer className="border-t border-line">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="font-display text-2xl font-semibold tracking-tight">
-            Malick Assouma<span className="text-accent">.</span>
+          <p className="text-xl sm:text-2xl">
+            <Logo />
           </p>
           <p className="mt-1 text-xs text-muted">
             © 2026 {site.fullName}. {footer.rights} <span className="text-accent">{"// "}{footer.tagline}</span>
