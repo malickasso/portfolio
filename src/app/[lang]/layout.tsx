@@ -3,8 +3,9 @@ import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { getDictionary, hasLocale, locales } from "@/content";
+import { getDictionary, locales } from "@/content";
 import { site } from "@/content/site";
+import { currentLang } from "@/lib/page";
 import "../globals.css";
 
 const space = Space_Grotesk({ variable: "--font-space", subsets: ["latin"] });
@@ -14,11 +15,9 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-export async function generateMetadata({
-  params,
-}: LayoutProps<"/[lang]">): Promise<Metadata> {
-  const { lang } = await params;
-  if (!hasLocale(lang)) return {};
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await currentLang();
+  if (!lang) return {};
   const dict = getDictionary(lang);
   return {
     metadataBase: new URL(site.url),
@@ -37,9 +36,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
-  const { lang } = await params;
-  if (!hasLocale(lang)) notFound();
+export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
+  const lang = await currentLang();
+  if (!lang) notFound();
 
   return (
     <html

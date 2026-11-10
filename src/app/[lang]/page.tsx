@@ -15,12 +15,12 @@ import { site } from "@/content/site";
 import { getCertifications, getPosts, getProjects } from "@/lib/content";
 import { resolvePage } from "@/lib/page";
 
-export default async function Home({ params }: PageProps<"/[lang]">) {
-  const { lang, dict } = await resolvePage(params);
+export default async function Home() {
+  const { lang, dict } = await resolvePage();
   const [certifications, projects, posts] = await Promise.all([
-    getCertifications(lang),
-    getProjects(lang),
-    getPosts(lang),
+    getCertifications(),
+    getProjects(),
+    getPosts(),
   ]);
   const stats = dict.stats.map((s) =>
     s.source === "certifications" ? { ...s, value: certifications.length } : s,

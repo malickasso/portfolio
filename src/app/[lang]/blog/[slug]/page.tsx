@@ -5,9 +5,12 @@ import { notFound } from "next/navigation";
 import React from "react";
 import PageShell from "@/components/PageShell";
 import { BackLink } from "@/components/ui";
-import { hasLocale } from "@/content";
 import { getPost, getPostSlugs } from "@/lib/content";
-import { resolvePage } from "@/lib/page";
+import { currentLang, resolvePage } from "@/lib/page";
+
+// Chaque article dépend de son identifiant dans l'URL (donnée d'URL) : les pages
+// sont pré-générées au build, on les sort donc de la validation « instant ».
+export const instant = false;
 
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
@@ -16,9 +19,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/blog/[slug]">): Promise<Metadata> {
-  const { lang, slug } = await params;
-  if (!hasLocale(lang)) return {};
-  const post = await getPost(slug, lang);
+  const lang = await currentLang();
+  const { slug } = await params;
+  if (!lang) return {};
+  const post = await getPost(slug);
   if (!post) return {};
   return {
     title: `${post.title} — Malick Assouma`,
@@ -32,9 +36,9 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/blog/[slug
 }
 
 export default async function PostPage({ params }: PageProps<"/[lang]/blog/[slug]">) {
-  const { lang, dict } = await resolvePage(params);
+  const { lang, dict } = await resolvePage();
   const { slug } = await params;
-  const post = await getPost(slug, lang);
+  const post = await getPost(slug);
   if (!post) notFound();
 
   return (

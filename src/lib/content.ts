@@ -1,18 +1,30 @@
 import "server-only";
 import { cacheLife } from "next/cache";
 import { createReader } from "@keystatic/core/reader";
+import { lang as rootLang } from "next/root-params";
 import Markdoc, { type RenderableTreeNode } from "@markdoc/markdoc";
 import keystaticConfig from "../../keystatic.config";
-import type { Locale } from "@/content";
+import { defaultLocale, hasLocale, type Locale } from "@/content";
 import type { CaseVisual, WorkFilter } from "@/content/types";
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
-// En production le contenu ne change qu'au redéploiement ; en développement on
-// relit les fichiers en continu pour voir tout de suite ce que l'admin enregistre.
+// En production le contenu ne change qu'au redéploiement. En développement, on
+// relit les fichiers chaque seconde pour voir ce que l'admin enregistre, avec
+// stale et expire ≥ 5 min pour rester dans l'App Shell (sinon Next lève une erreur).
 function contentCache() {
-  if (process.env.NODE_ENV === "development") cacheLife("seconds");
+  if (process.env.NODE_ENV === "development") cacheLife({ stale: 300, revalidate: 1, expire: 300 });
   else cacheLife("max");
+}
+
+/**
+ * Langue lue dans le cache lui-même : un paramètre racine (`next/root-params`)
+ * fait partie de la clé du cache sans être traité comme une donnée d'URL,
+ * contrairement à une langue passée en argument.
+ */
+async function cachedLang(): Promise<Locale> {
+  const value = await rootLang();
+  return value && hasLocale(value) ? value : defaultLocale;
 }
 
 const pick = (lang: Locale, fr: string, en?: string | null) =>
@@ -53,9 +65,10 @@ export type Certification = {
   featured: boolean;
 };
 
-export async function getCertifications(lang: Locale): Promise<Certification[]> {
+export async function getCertifications(): Promise<Certification[]> {
   "use cache";
   contentCache();
+  const lang = await cachedLang();
   const entries = await reader.collections.certifications.all();
   return entries
     .map(({ slug, entry }) => ({
@@ -97,9 +110,10 @@ const prefixes: Record<WorkFilter, string> = {
   ctf: "CTF",
 };
 
-export async function getProjects(lang: Locale): Promise<Project[]> {
+export async function getProjects(): Promise<Project[]> {
   "use cache";
   contentCache();
+  const lang = await cachedLang();
   const entries = await reader.collections.projects.all();
   return entries
     .sort(
@@ -135,9 +149,10 @@ export type PostSummary = {
   tags: string[];
 };
 
-export async function getPosts(lang: Locale): Promise<PostSummary[]> {
+export async function getPosts(): Promise<PostSummary[]> {
   "use cache";
   contentCache();
+  const lang = await cachedLang();
   const entries = await reader.collections.posts.all();
   return entries
     .map(({ slug, entry }) => ({
@@ -158,9 +173,10 @@ export async function getPostSlugs() {
   return reader.collections.posts.list();
 }
 
-export async function getPost(slug: string, lang: Locale) {
+export async function getPost(slug: string) {
   "use cache";
   contentCache();
+  const lang = await cachedLang();
   const entry = await reader.collections.posts.read(slug);
   if (!entry) return null;
 
