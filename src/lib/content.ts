@@ -1,4 +1,5 @@
 import "server-only";
+import { cacheLife } from "next/cache";
 import { createReader } from "@keystatic/core/reader";
 import Markdoc, { type RenderableTreeNode } from "@markdoc/markdoc";
 import keystaticConfig from "../../keystatic.config";
@@ -6,6 +7,13 @@ import type { Locale } from "@/content";
 import type { CaseVisual, WorkFilter } from "@/content/types";
 
 const reader = createReader(process.cwd(), keystaticConfig);
+
+// En production le contenu ne change qu'au redéploiement ; en développement on
+// relit les fichiers en continu pour voir tout de suite ce que l'admin enregistre.
+function contentCache() {
+  if (process.env.NODE_ENV === "development") cacheLife("seconds");
+  else cacheLife("max");
+}
 
 const pick = (lang: Locale, fr: string, en?: string | null) =>
   lang === "en" && en?.trim() ? en : fr;
@@ -47,6 +55,7 @@ export type Certification = {
 
 export async function getCertifications(lang: Locale): Promise<Certification[]> {
   "use cache";
+  contentCache();
   const entries = await reader.collections.certifications.all();
   return entries
     .map(({ slug, entry }) => ({
@@ -90,6 +99,7 @@ const prefixes: Record<WorkFilter, string> = {
 
 export async function getProjects(lang: Locale): Promise<Project[]> {
   "use cache";
+  contentCache();
   const entries = await reader.collections.projects.all();
   return entries
     .sort(
@@ -127,6 +137,7 @@ export type PostSummary = {
 
 export async function getPosts(lang: Locale): Promise<PostSummary[]> {
   "use cache";
+  contentCache();
   const entries = await reader.collections.posts.all();
   return entries
     .map(({ slug, entry }) => ({
@@ -143,11 +154,13 @@ export async function getPosts(lang: Locale): Promise<PostSummary[]> {
 
 export async function getPostSlugs() {
   "use cache";
+  contentCache();
   return reader.collections.posts.list();
 }
 
 export async function getPost(slug: string, lang: Locale) {
   "use cache";
+  contentCache();
   const entry = await reader.collections.posts.read(slug);
   if (!entry) return null;
 
