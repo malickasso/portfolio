@@ -47,5 +47,3 @@ next-env.d.ts
 /skills-lock.json
 /CV_Abdou_Malick_ASSOUMA_Analyste_Cybersecurite.pdf
 
-# certificats (PDF) : gardés en local, jamais publiés
-/public/certifications/

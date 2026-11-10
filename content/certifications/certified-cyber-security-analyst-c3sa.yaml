@@ -1,6 +1,11 @@
-name: "Certified Cyber Security Analyst (C3SA)"
-issuer: "CyberWarFare Labs"
-date: "2026"
-summaryFr: "Exploitation web, attaques réseau, sécurité des systèmes et du cloud, opérations SOC, sur un cyber range local."
-summaryEn: "Web exploitation, network attacks, OS and cloud security, SOC operations, on a local cyber range."
+name: Certified Cyber Security Analyst (C3SA)
+issuer: CyberWarFare Labs
+date: '2026'
+summaryFr: >-
+  Exploitation web, attaques réseau, sécurité des systèmes et du cloud,
+  opérations SOC, sur un cyber range local.
+summaryEn: >-
+  Web exploitation, network attacks, OS and cloud security, SOC operations, on a
+  local cyber range.
+pdf: /certifications/certified-cyber-security-analyst-c3sa/pdf.pdf
 featured: true
