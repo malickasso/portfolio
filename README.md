@@ -36,7 +36,7 @@ L'admin en ligne demande une connexion GitHub : seuls les comptes ayant accès a
 
 Mise en place, une seule fois, après avoir créé le dépôt GitHub `malickasso/portfolio` :
 1. Dans `.env.local`, mettre `NEXT_PUBLIC_KEYSTATIC_STORAGE=github`, puis lancer `npm run dev` et ouvrir `/keystatic`.
-2. Suivre l'assistant pour créer l'app GitHub. Il ajoute `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` et `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` dans `.env.local`.
+2. Suivre l'assistant pour créer l'app GitHub. Il ajoute `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` et `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` dans `.env`. Indiquer l'adresse du site en ligne dans le champ prévu, pour que la connexion fonctionne aussi en production.
 3. Copier ces 4 variables dans les variables d'environnement Vercel, puis redéployer.
 
 Tant que ce n'est pas configuré, `/keystatic` répond 404 en production (le mode local, qui n'a pas d'authentification, est bloqué hors développement).
