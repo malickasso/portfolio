@@ -1,0 +1,118 @@
+/*
+ * Habillage de l'admin Keystatic aux couleurs du portfolio.
+ * Keystatic construit toute son interface à partir de deux échelles :
+ * « slate » (fonds, bordures, textes) et « indigo » (accent). On les remplace
+ * par les gris-verts et le vert du site (voir globals.css).
+ * Le préfixe `html` donne la priorité sur les styles injectés par Keystatic.
+ */
+
+html.kui-theme,
+html .kui-theme {
+  --kui-typography-font-family-base: var(--font-space), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --kui-typography-font-family-code: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --kui-size-radius-small: 6px;
+  --kui-size-radius-regular: 8px;
+  --kui-size-radius-medium: 10px;
+  --kui-size-radius-large: 14px;
+  --kui-size-radius-xlarge: 20px;
+}
+
+/* Thème clair */
+html.kui-scheme--light,
+html .kui-scheme--light,
+html.kui-scheme--auto,
+html .kui-scheme--auto {
+  --kui-color-scale-slate1: #f6f7f4;
+  --kui-color-scale-slate2: #eef0ec;
+  --kui-color-scale-slate3: #e6e9e3;
+  --kui-color-scale-slate4: #dde1da;
+  --kui-color-scale-slate5: #d3d8d1;
+  --kui-color-scale-slate6: #bcc3bb;
+  --kui-color-scale-slate7: #a3aba4;
+  --kui-color-scale-slate8: #7f8983;
+  --kui-color-scale-slate9: #5a645f;
+  --kui-color-scale-slate10: #3c4541;
+  --kui-color-scale-slate11: #101312;
+
+  --kui-color-scale-indigo1: #fafdfb;
+  --kui-color-scale-indigo2: #f2fbf6;
+  --kui-color-scale-indigo3: #e6f6ed;
+  --kui-color-scale-indigo4: #d8f0e2;
+  --kui-color-scale-indigo5: #c6e8d4;
+  --kui-color-scale-indigo6: #addcc1;
+  --kui-color-scale-indigo7: #8bcba7;
+  --kui-color-scale-indigo8: #57b382;
+  --kui-color-scale-indigo9: #0f9f55;
+  --kui-color-scale-indigo10: #0c8b4a;
+  --kui-color-scale-indigo11: #0a7a41;
+
+  --kui-color-foreground-on-emphasis: #ffffff;
+}
+
+/* Thème sombre */
+html.kui-scheme--dark,
+html .kui-scheme--dark {
+  --kui-color-scale-slate1: #0b0d0c;
+  --kui-color-scale-slate2: #121614;
+  --kui-color-scale-slate3: #181d1a;
+  --kui-color-scale-slate4: #1f2622;
+  --kui-color-scale-slate5: #242b27;
+  --kui-color-scale-slate6: #313a35;
+  --kui-color-scale-slate7: #45504a;
+  --kui-color-scale-slate8: #5f6b65;
+  --kui-color-scale-slate9: #8b9590;
+  --kui-color-scale-slate10: #b7c0bb;
+  --kui-color-scale-slate11: #eceeec;
+
+  --kui-color-scale-indigo1: #0b130f;
+  --kui-color-scale-indigo2: #0d1a13;
+  --kui-color-scale-indigo3: #0f2a1c;
+  --kui-color-scale-indigo4: #113423;
+  --kui-color-scale-indigo5: #143f2a;
+  --kui-color-scale-indigo6: #174d33;
+  --kui-color-scale-indigo7: #1b6341;
+  --kui-color-scale-indigo8: #1f8355;
+  --kui-color-scale-indigo9: #2fe28a;
+  --kui-color-scale-indigo10: #4be89a;
+  --kui-color-scale-indigo11: #2fe28a;
+
+  /* Le vert vif demande un texte sombre sur les boutons pleins. */
+  --kui-color-foreground-on-emphasis: #06130c;
+}
+
+/* Thème « système » quand l'appareil est en sombre */
+@media (prefers-color-scheme: dark) {
+  html.kui-scheme--auto,
+  html .kui-scheme--auto {
+    --kui-color-scale-slate1: #0b0d0c;
+    --kui-color-scale-slate2: #121614;
+    --kui-color-scale-slate3: #181d1a;
+    --kui-color-scale-slate4: #1f2622;
+    --kui-color-scale-slate5: #242b27;
+    --kui-color-scale-slate6: #313a35;
+    --kui-color-scale-slate7: #45504a;
+    --kui-color-scale-slate8: #5f6b65;
+    --kui-color-scale-slate9: #8b9590;
+    --kui-color-scale-slate10: #b7c0bb;
+    --kui-color-scale-slate11: #eceeec;
+
+    --kui-color-scale-indigo1: #0b130f;
+    --kui-color-scale-indigo2: #0d1a13;
+    --kui-color-scale-indigo3: #0f2a1c;
+    --kui-color-scale-indigo4: #113423;
+    --kui-color-scale-indigo5: #143f2a;
+    --kui-color-scale-indigo6: #174d33;
+    --kui-color-scale-indigo7: #1b6341;
+    --kui-color-scale-indigo8: #1f8355;
+    --kui-color-scale-indigo9: #2fe28a;
+    --kui-color-scale-indigo10: #4be89a;
+    --kui-color-scale-indigo11: #2fe28a;
+
+    --kui-color-foreground-on-emphasis: #06130c;
+  }
+}
+
+::selection {
+  background: var(--kui-color-scale-indigo9);
+  color: var(--kui-color-foreground-on-emphasis);
+}

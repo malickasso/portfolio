@@ -19,13 +19,34 @@ const monthField = (label: string, isRequired: boolean) =>
 const optionalEn = (label: string, multiline = false) =>
   fields.text({ label, multiline, description: "Optionnel. Vide = le texte français est affiché." });
 
+// Logo de l'admin : le « </> » du logo du site, dans le vert d'accent du thème actif.
+function BrandMark({ colorScheme }: { colorScheme: "light" | "dark" }) {
+  const dark = colorScheme === "dark";
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect width="24" height="24" rx="7" fill={dark ? "#2fe28a" : "#0f9f55"} />
+      <path
+        d="M9 8.5 5.5 12 9 15.5M15 8.5l3.5 3.5-3.5 3.5M13.2 7l-2.4 10"
+        stroke={dark ? "#06130c" : "#ffffff"}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default config({
+  locale: "fr-FR",
   storage: useGithub
     ? { kind: "github", repo: { owner: "malickasso", name: "portfolio" } }
     : { kind: "local" },
   ui: {
-    brand: { name: "Malick Assouma · Admin" },
-    navigation: { Contenu: ["certifications", "projects", "posts"] },
+    brand: { name: "Malick ASSOUMA", mark: BrandMark },
+    navigation: {
+      Portfolio: ["projects", "certifications"],
+      Blog: ["posts"],
+    },
   },
   collections: {
     certifications: collection({
@@ -33,7 +54,8 @@ export default config({
       path: "content/certifications/*",
       slugField: "name",
       format: { data: "yaml" },
-      columns: ["name", "date"],
+      columns: ["name", "issuer", "date", "featured"],
+      previewUrl: "/fr/certifications",
       schema: {
         name: fields.slug({ name: { label: "Nom de la certification", validation: { isRequired: true } } }),
         issuer: fields.text({ label: "Organisme", validation: { isRequired: true } }),
@@ -60,7 +82,8 @@ export default config({
       path: "content/projects/*",
       slugField: "title",
       format: { data: "yaml" },
-      columns: ["title", "category", "date"],
+      columns: ["title", "category", "date", "featured"],
+      previewUrl: "/fr/work",
       schema: {
         title: fields.slug({ name: { label: "Titre (FR)", validation: { isRequired: true } } }),
         titleEn: optionalEn("Titre (EN)"),
@@ -116,6 +139,7 @@ export default config({
       slugField: "title",
       format: { data: "yaml" },
       columns: ["title", "date"],
+      previewUrl: "/fr/blog/{slug}",
       schema: {
         title: fields.slug({ name: { label: "Titre (FR)", validation: { isRequired: true } } }),
         titleEn: optionalEn("Titre (EN)"),
