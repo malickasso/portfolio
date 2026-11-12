@@ -1,4 +1,5 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
+import { shrinkImage } from "./src/app/keystatic/shrinkImage";
 
 // GitHub dès que l'app GitHub est configurée (ou forcée pour la créer), sinon local.
 export const useGithub =
@@ -18,6 +19,26 @@ const monthField = (label: string, isRequired: boolean) =>
 
 const optionalEn = (label: string, multiline = false) =>
   fields.text({ label, multiline, description: "Optionnel. Vide = le texte français est affiché." });
+
+// Champ image qui réduit les photos trop lourdes avant l'envoi (voir shrinkImage).
+function imageField(options: Parameters<typeof fields.image>[0]) {
+  const field = fields.image(options);
+  const BaseInput = field.Input;
+  return {
+    ...field,
+    Input(props: Parameters<typeof BaseInput>[0]) {
+      return (
+        <BaseInput
+          {...props}
+          onChange={(value) => {
+            if (value) void shrinkImage(value).then(props.onChange);
+            else props.onChange(value);
+          }}
+        />
+      );
+    },
+  };
+}
 
 // Logo de l'admin : le « </> » du logo du site, dans le vert d'accent du thème actif.
 function BrandMark({ colorScheme }: { colorScheme: "light" | "dark" }) {
@@ -56,7 +77,7 @@ export default config({
       format: { data: "yaml" },
       previewUrl: "/fr",
       schema: {
-        photo: fields.image({
+        photo: imageField({
           label: "Photo",
           description: "Portrait affiché à droite du titre (format vertical 4:5 conseillé). Sans photo, un visuel neutre est affiché.",
           directory: "public/images/hero",
@@ -141,7 +162,7 @@ export default config({
           itemLabel: (p) => p.value,
         }),
         url: fields.url({ label: "URL du projet", description: "Site, dépôt GitHub ou rapport en ligne." }),
-        image: fields.image({
+        image: imageField({
           label: "Capture d'écran",
           description: "Optionnel. Sans image, le visuel ci-dessous est utilisé.",
           directory: "public/images/projects",
@@ -178,7 +199,7 @@ export default config({
         date: fields.date({ label: "Date de publication", validation: { isRequired: true } }),
         excerptFr: fields.text({ label: "Résumé (FR)", multiline: true, validation: { isRequired: true } }),
         excerptEn: optionalEn("Résumé (EN)", true),
-        cover: fields.image({
+        cover: imageField({
           label: "Image de couverture",
           directory: "public/images/blog",
           publicPath: "/images/blog/",
