@@ -14,8 +14,6 @@ export const site = {
   cv: "/CV_Abdou_Malick_ASSOUMA_Analyste_Cybersecurite.pdf",
   // CV anglais : déposez le PDF dans public/ puis indiquez son chemin.
   cvEn: null as string | null,
-  // Déposez votre photo dans public/ puis indiquez son chemin, ex. "/photo.jpg".
-  photo: null as string | null,
   // Sections prêtes à activer quand le contenu existe.
   features: {
     testimonials: false,

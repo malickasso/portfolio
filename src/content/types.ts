@@ -112,7 +112,7 @@ export type Dictionary = {
     label: string;
     title: string;
     intro: string;
-    channels: { email: string; whatsapp: string; cv: string; cvHint: string };
+    channels: { email: string; whatsapp: string };
     form: {
       name: string;
       email: string;

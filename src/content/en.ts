@@ -56,7 +56,7 @@ export const en: Dictionary = {
       educationValue: "MSc Cybersecurity (IFRI)",
       email: "Email",
       github: "GitHub",
-      cvTitle: "Download my résumé",
+      cvTitle: "View my résumé",
       cvSoon: "soon",
     },
   },
@@ -284,8 +284,6 @@ export const en: Dictionary = {
     channels: {
       email: "Email",
       whatsapp: "WhatsApp and phone",
-      cv: "Résumé",
-      cvHint: "PDF, French",
     },
     form: {
       name: "Full name",

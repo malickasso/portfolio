@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { AlertTriangle, ArrowUpRight, CheckCircle2, FileText, Loader2, Mail } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, CheckCircle2, Loader2, Mail } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import type { Dictionary } from "@/content/types";
 import { contactSubjects, site, type ContactSubject } from "@/content/site";
@@ -44,7 +44,6 @@ export default function Contact({ contact }: { contact: Dictionary["contact"] })
       value: site.whatsappDisplay,
       href: `https://wa.me/${site.whatsapp}`,
     },
-    { icon: <FileText className="h-5 w-5" />, label: contact.channels.cvHint, value: contact.channels.cv, href: site.cv },
   ];
 
   return (

@@ -4,8 +4,8 @@ import { createReader } from "@keystatic/core/reader";
 import { lang as rootLang } from "next/root-params";
 import Markdoc, { type RenderableTreeNode } from "@markdoc/markdoc";
 import keystaticConfig from "../../keystatic.config";
-import { defaultLocale, hasLocale, type Locale } from "@/content";
-import type { CaseVisual, WorkFilter } from "@/content/types";
+import { defaultLocale, getDictionary, hasLocale, type Locale } from "@/content";
+import type { CaseVisual, Dictionary, WorkFilter } from "@/content/types";
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
@@ -50,6 +50,30 @@ function formatDay(value: string, lang: Locale) {
 }
 
 const byDateDesc = (a?: string | null, b?: string | null) => (b ?? "").localeCompare(a ?? "");
+
+// ---------- Hero ----------
+
+export type HeroContent = Dictionary["hero"] & { photo: string | null };
+
+/** Hero géré dans l'admin ; sans fichier `content/hero.yaml`, les textes du dictionnaire servent de repli. */
+export async function getHero(): Promise<HeroContent> {
+  "use cache";
+  contentCache();
+  const lang = await cachedLang();
+  const fallback = getDictionary(lang).hero;
+  const entry = await reader.singletons.hero.read();
+  if (!entry) return { ...fallback, photo: null };
+  return {
+    ...fallback,
+    badge: pick(lang, entry.badgeFr, entry.badgeEn),
+    headline: entry.headline,
+    sub: pick(lang, entry.subFr, entry.subEn),
+    ctaPrimary: pick(lang, entry.ctaPrimaryFr, entry.ctaPrimaryEn),
+    ctaSecondary: pick(lang, entry.ctaSecondaryFr, entry.ctaSecondaryEn),
+    photoCaption: pick(lang, entry.photoCaptionFr, entry.photoCaptionEn),
+    photo: entry.photo,
+  };
+}
 
 // ---------- Certifications ----------
 

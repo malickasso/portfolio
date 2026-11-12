@@ -12,12 +12,13 @@ import Stats from "@/components/Stats";
 import TechMarquee from "@/components/TechMarquee";
 import Work from "@/components/Work";
 import { site } from "@/content/site";
-import { getCertifications, getPosts, getProjects } from "@/lib/content";
+import { getCertifications, getHero, getPosts, getProjects } from "@/lib/content";
 import { resolvePage } from "@/lib/page";
 
 export default async function Home() {
   const { lang, dict } = await resolvePage();
-  const [certifications, projects, posts] = await Promise.all([
+  const [hero, certifications, projects, posts] = await Promise.all([
+    getHero(),
     getCertifications(),
     getProjects(),
     getPosts(),
@@ -28,7 +29,7 @@ export default async function Home() {
 
   return (
     <PageShell lang={lang} dict={dict}>
-      <Hero hero={dict.hero} />
+      <Hero hero={hero} />
       <Stats stats={stats} />
       <About about={dict.about} />
       <Skills skills={dict.skills} common={dict.common} lang={lang} preview />

@@ -1,4 +1,4 @@
-import { collection, config, fields } from "@keystatic/core";
+import { collection, config, fields, singleton } from "@keystatic/core";
 
 // GitHub dès que l'app GitHub est configurée (ou forcée pour la créer), sinon local.
 export const useGithub =
@@ -44,9 +44,41 @@ export default config({
   ui: {
     brand: { name: "Malick ASSOUMA", mark: BrandMark },
     navigation: {
+      Accueil: ["hero"],
       Portfolio: ["projects", "certifications"],
       Blog: ["posts"],
     },
+  },
+  singletons: {
+    hero: singleton({
+      label: "Section d'accueil (hero)",
+      path: "content/hero",
+      format: { data: "yaml" },
+      previewUrl: "/fr",
+      schema: {
+        photo: fields.image({
+          label: "Photo",
+          description: "Portrait affiché à droite du titre (format vertical 4:5 conseillé). Sans photo, un visuel neutre est affiché.",
+          directory: "public/images/hero",
+          publicPath: "/images/hero/",
+        }),
+        headline: fields.text({
+          label: "Titre",
+          description: "Le premier mot s'affiche sur la première ligne, le reste sur la seconde.",
+          validation: { isRequired: true },
+        }),
+        badgeFr: fields.text({ label: "Badge de disponibilité (FR)", validation: { isRequired: true } }),
+        badgeEn: optionalEn("Badge de disponibilité (EN)"),
+        subFr: fields.text({ label: "Texte d'accroche (FR)", multiline: true, validation: { isRequired: true } }),
+        subEn: optionalEn("Texte d'accroche (EN)", true),
+        ctaPrimaryFr: fields.text({ label: "Bouton principal (FR)", description: "Mène au formulaire de contact.", validation: { isRequired: true } }),
+        ctaPrimaryEn: optionalEn("Bouton principal (EN)"),
+        ctaSecondaryFr: fields.text({ label: "Bouton secondaire (FR)", description: "Mène aux réalisations.", validation: { isRequired: true } }),
+        ctaSecondaryEn: optionalEn("Bouton secondaire (EN)"),
+        photoCaptionFr: fields.text({ label: "Légende sous la photo (FR)", validation: { isRequired: true } }),
+        photoCaptionEn: optionalEn("Légende sous la photo (EN)"),
+      },
+    }),
   },
   collections: {
     certifications: collection({

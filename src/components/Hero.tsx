@@ -3,14 +3,15 @@
 import { motion } from "motion/react";
 import { CalendarCheck, ShieldCheck } from "lucide-react";
 import Image from "next/image";
-import type { Dictionary } from "@/content/types";
+import type { HeroContent } from "@/lib/content";
 import { site } from "@/content/site";
 import { ArrowButton, GithubIcon, LinkedinIcon, WhatsappIcon } from "./ui";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-export default function Hero({ hero }: { hero: Dictionary["hero"] }) {
-  const [first, last] = hero.headline.split(" ");
+export default function Hero({ hero }: { hero: HeroContent }) {
+  const [first, ...rest] = hero.headline.trim().split(/\s+/);
+  const lines = [first, rest.join(" ")].filter(Boolean);
 
   return (
     <section id="top" className="relative overflow-hidden pt-28 pb-16 sm:pt-32">
@@ -32,8 +33,8 @@ export default function Hero({ hero }: { hero: Dictionary["hero"] }) {
           </motion.span>
 
           <h1 className="mt-8 font-display text-6xl font-bold leading-[0.92] tracking-tighter sm:text-8xl xl:text-9xl">
-            {[first, last].map((word, i) => (
-              <span key={word} className="block overflow-hidden pb-2">
+            {lines.map((word, i) => (
+              <span key={i} className="block overflow-hidden pb-2">
                 <motion.span
                   className="block"
                   initial={{ y: "105%" }}
@@ -74,9 +75,9 @@ export default function Hero({ hero }: { hero: Dictionary["hero"] }) {
           transition={{ duration: 1, delay: 0.3, ease }}
           className="corners relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-line bg-surface"
         >
-          {site.photo ? (
+          {hero.photo ? (
             <Image
-              src={site.photo}
+              src={hero.photo}
               alt={site.fullName}
               fill
               priority

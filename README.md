@@ -16,17 +16,18 @@ npm run dev                  # http://localhost:3000 (cette machine uniquement)
 | `npm run dev:lan` | Tester depuis un téléphone sur le même Wi-Fi (`http://<ip-du-pc>:3000`). L'admin `/keystatic` est désactivé dans ce mode. |
 | `npm run build && npm run start` | Version de production, la seule à exposer par un tunnel (ngrok) pour une démo. |
 
-## Admin : certifications, projets, blog
+## Admin : accueil, certifications, projets, blog
 
 Ouvrir **`/keystatic`** (ex. http://localhost:3000/keystatic) :
 
+- **Section d'accueil (hero)** : photo, titre, badge, texte d'accroche, boutons et légende de la photo (FR, EN optionnel).
 - **Certifications** : nom, organisme, date (`2026-07`), présentation FR (EN optionnelle), PDF du certificat, lien de vérification.
 - **Projets** : titre, catégorie (filtre), description, outils, URL, capture d'écran.
 - **Articles de blog** : titre, date, résumé, couverture, tags, article FR (EN optionnel).
 
 Un champ anglais laissé vide affiche le texte français sur la version anglaise du site. « Mettre en avant sur l'accueil » choisit les 3 cartes affichées sur la page d'accueil.
 
-Le contenu est stocké dans `content/` (fichiers YAML et Markdoc), et les fichiers envoyés dans `public/certifications`, `public/images/projects` et `public/images/blog`.
+Le contenu est stocké dans `content/` (fichiers YAML et Markdoc), et les fichiers envoyés dans `public/certifications`, `public/images/hero`, `public/images/projects` et `public/images/blog`.
 
 ### En local
 L'admin écrit directement dans les fichiers du projet. Il faut ensuite `git commit` puis `git push` pour publier.
@@ -53,7 +54,6 @@ Tant que ce n'est pas configuré, `/keystatic` répond 404 en production (le mod
 |---|---|
 | Textes FR / EN (accueil, compétences, services, méthode…) | `src/content/fr.ts`, `src/content/en.ts` |
 | Liens, email, WhatsApp, technologies, sections à activer | `src/content/site.ts` |
-| Photo | déposer `public/photo.jpg`, puis `photo: "/photo.jpg"` dans `site.ts` |
 | CV | remplacer le PDF dans `public/` (et le chemin `cv` dans `site.ts`) |
 
 L'accueil affiche 3 cartes par section. Les pages `/fr/skills`, `/fr/work`, `/fr/services`, `/fr/certifications` et `/fr/blog` (et leurs versions `/en/...`) affichent tout.

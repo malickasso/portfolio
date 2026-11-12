@@ -22,7 +22,7 @@ export default function Footer({ footer, nav, lang }: { footer: Dictionary["foot
           <Link href={`/${lang}/services`} className="hover:text-fg">{nav.services}</Link>
           <Link href={`/${lang}/certifications`} className="hover:text-fg">{nav.certs}</Link>
           <Link href={`/${lang}/blog`} className="hover:text-fg">{nav.blog}</Link>
-          <a href={site.cv} className="hover:text-fg">CV (PDF)</a>
+          <a href={site.cv} target="_blank" rel="noreferrer" className="hover:text-fg">CV (PDF)</a>
           <span className="flex items-center gap-4">
             <a href={site.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-fg">
               <GithubIcon className="h-5 w-5" />

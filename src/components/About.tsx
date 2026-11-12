@@ -102,20 +102,22 @@ function SpecCard({ spec }: { spec: Dictionary["about"]["spec"] }) {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <a
             href={site.cv}
-            download
+            target="_blank"
+            rel="noreferrer"
             className={`${btn} rounded-full border-accent bg-accent text-accent-fg hover:bg-transparent hover:text-accent`}
           >
             <span>CV [FR]</span>
-            <span className="transition-transform group-hover:translate-y-0.5">&darr;</span>
+            <span className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">&#8599;</span>
           </a>
           {site.cvEn ? (
             <a
               href={site.cvEn}
-              download
+              target="_blank"
+              rel="noreferrer"
               className={`${btn} rounded-full border-line bg-bg text-fg hover:border-accent hover:text-accent`}
             >
               <span>CV [EN]</span>
-              <span className="transition-transform group-hover:translate-y-0.5">&darr;</span>
+              <span className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">&#8599;</span>
             </a>
           ) : (
             <span aria-disabled className={`${btn} cursor-not-allowed rounded-full border-line bg-bg text-muted opacity-60`}>
